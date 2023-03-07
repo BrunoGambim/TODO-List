@@ -1,0 +1,36 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef class="table-header"> Name </th>
+    <td mat-cell *matCellDef="let element" class="table-cell"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef class="table-header"> Description </th>
+    <td mat-cell *matCellDef="let element" class="table-cell"> {{element.description}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="priority">
+    <th mat-header-cell *matHeaderCellDef class="table-header"> Priority </th>
+    <td mat-cell *matCellDef="let element" class="column-priority table-cell" [ngClass]="{'green': element.priority === 'low', 'red': element.priority === 'high', 'orange': element.priority === 'medium'}"> {{element.priority}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef class="table-header"> Status </th>
+    <td mat-cell *matCellDef="let element" class="column-status table-cell" [ngClass]="{'green': element.status === 'todo', 'red': element.status === 'done', 'orange': element.status === 'in progress'}"> {{element.status}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="difficulty">
+    <th mat-header-cell *matHeaderCellDef class="table-header"> Difficulty </th>
+    <td mat-cell *matCellDef="let element" class="column-difficulty table-cell"[ngClass]="{'green': element.difficulty === 'easy', 'red': element.difficulty === 'hard', 'orange': element.difficulty === 'moderate'}"> {{element.difficulty}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<div class="add-button-container">
+  <button mat-fab color="accent" aria-label="Example icon button with a plus one icon">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
