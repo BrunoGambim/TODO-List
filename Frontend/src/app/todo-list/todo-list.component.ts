@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TodoItemFormComponent } from '../todo-item-form/todo-item-form.component';
 
 export interface TODOElement {
   name: string;
@@ -40,4 +42,9 @@ const ELEMENT_DATA: TODOElement[] = [
 export class TodoListComponent {
   displayedColumns: string[] = ['name', 'description',  'priority', 'status', 'difficulty'];
   dataSource = ELEMENT_DATA;
+  constructor(public dialog: MatDialog) {}
+
+  openDialog() {
+    const dialogRef = this.dialog.open(TodoItemFormComponent);
+  }
 }
