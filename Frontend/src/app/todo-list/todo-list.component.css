@@ -1,0 +1,34 @@
+table {
+  box-shadow: none;
+}
+
+.column-priority, .column-status, .column-difficulty {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.table-header {
+  font-size: 1.1rem;
+}
+
+.green {
+  color: #66bf3c;
+}
+
+.orange {
+  color: #e69d00;
+}
+
+.red {
+  color: #ff4400;
+}
+
+.table-cell {
+  padding-top: .8rem;
+  padding-bottom: .8rem;
+}
+
+.add-button-container{
+  text-align: right;
+  padding-bottom: 3rem;
+}
