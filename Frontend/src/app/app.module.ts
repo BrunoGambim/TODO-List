@@ -14,12 +14,14 @@ import { TodoItemFormComponent } from './todo-item-form/todo-item-form.component
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { TodoListFormComponent } from './todo-list-form/todo-list-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
-    TodoItemFormComponent
+    TodoItemFormComponent,
+    TodoListFormComponent
   ],
   imports: [
     BrowserModule,
