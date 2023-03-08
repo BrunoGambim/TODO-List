@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <h1 class="main-title">TODO List</h1>
+  <span class="example-spacer"></span>
+  <button mat-stroked-button class="navbar-button"  aria-label="Example icon-button with heart icon" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+    <span>Create new list</span>
+  </button>
+  <button mat-stroked-button class="navbar-button"  aria-label="Example icon-button with heart icon" [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+    <span>Lists</span>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let todoList of todoLists;" class="menu-items" (click) = "setListId(todoList.id)">{{todoList.name}}</button>
+  </mat-menu>
+</mat-toolbar>
