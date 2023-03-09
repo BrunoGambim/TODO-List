@@ -14,7 +14,9 @@ public class AddAnItemToAListUseCase {
 		this.todoListRepository = todoListRepository;
 	}
 	
-	public void execute(String name, String description, Priority priority, Difficulty difficulty, Status status, Long id) {
-		this.todoListRepository.addItemToAList(new TodoItem(null, name, description, priority, difficulty, status), id);
+	public void execute(String name, String description, String priority, String difficulty, String status, Long id) {
+		this.todoListRepository.addItemToAList(
+				new TodoItem(null, name, description, Priority.toEnum(priority), Difficulty.toEnum(difficulty), Status.toEnum(status))
+				, id);
 	}
 }

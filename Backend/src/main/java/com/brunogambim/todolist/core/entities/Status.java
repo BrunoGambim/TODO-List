@@ -36,4 +36,13 @@ public enum Status {
 		}
 		throw new IllegalArgumentException("Invalid argument! Id:" + code);
 	}
+	
+	public static Status toEnum(String desc) {
+		for(Status status : Status.values()) {
+			if(desc.equals(status.getDescription())) {
+				return status;
+			}
+		}
+		throw new IllegalArgumentException("Invalid argument! Id:" + desc);
+	}
 }
