@@ -14,6 +14,13 @@ public class TodoList {
 		this.name = name;
 		this.items = items;
 	}
+	
+	public TodoList(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.items = new ArrayList<TodoItem>();
+	}
 
 	public Long getId() {
 		return id;
