@@ -3,15 +3,15 @@
   <form class="form">
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
-      <input matInput>
+      <input matInput [(ngModel)]="item.name" name="name">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Description</mat-label>
-      <textarea matInput></textarea>
+      <textarea matInput [(ngModel)]="item.description" name="description"></textarea>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Status</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="item.status" name="status">
         <mat-option value="todo">TODO</mat-option>
         <mat-option value="in progress">In progress</mat-option>
         <mat-option value="done">Done</mat-option>
@@ -19,7 +19,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Priority</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="item.priority" name="priority">
         <mat-option value="low">Low</mat-option>
         <mat-option value="medium">Medium</mat-option>
         <mat-option value="high">High</mat-option>
@@ -27,12 +27,12 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Difficulty</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="item.difficulty" name="difficulty">
         <mat-option value="easy">Easy</mat-option>
         <mat-option value="moderate">Moderate</mat-option>
         <mat-option value="hard">Hard</mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary">Create</button>
+    <button mat-raised-button color="primary" (click)="save()">Create</button>
   </form>
 </mat-dialog-content>
