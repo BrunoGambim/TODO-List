@@ -1,15 +1,18 @@
-package com.brunogambim.todolist.database.mysql;
+package com.brunogambim.todolist.database;
 
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.brunogambim.todolist.core.entities.TodoItem;
 import com.brunogambim.todolist.core.entities.TodoList;
 import com.brunogambim.todolist.core.repository.TodoListRepository;
+import com.brunogambim.todolist.database.mysql.models.TodoItemModel;
 import com.brunogambim.todolist.database.mysql.models.TodoListModel;
 import com.brunogambim.todolist.database.mysql.repositories.MysqlTodoListRepository;
 
+@Service
 public class TodoListRepositoryImpl implements TodoListRepository {
 	
 	private MysqlTodoListRepository listRepository;
@@ -37,7 +40,8 @@ public class TodoListRepositoryImpl implements TodoListRepository {
 
 	@Override
 	public void addItemToAList(TodoItem item, Long listId) {
-		// TODO Auto-generated method stub
-		
+		TodoListModel list = this.listRepository.findById(listId).get();
+		list.getItems().add(TodoItemModel.fromEntity(item));
+		this.listRepository.save(list);
 	}
 }
