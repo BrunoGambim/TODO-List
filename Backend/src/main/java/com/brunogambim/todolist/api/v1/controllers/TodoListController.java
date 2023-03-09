@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,7 +39,7 @@ public class TodoListController {
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public ResponseEntity<Void> createNewTodoList(@ModelAttribute  CreateTodoListDTO todoListDTO){
+	public ResponseEntity<Void> createNewTodoList(@RequestBody  CreateTodoListDTO todoListDTO){
 		CreateANewTodoListUseCase usecase = new CreateANewTodoListUseCase(todoListRepository);
 		usecase.execute(todoListDTO.getName());
 		return ResponseEntity.ok().build();
@@ -53,7 +53,7 @@ public class TodoListController {
 	}
 	
 	@RequestMapping(value = "/{id}/items", method = RequestMethod.POST)
-	public ResponseEntity<Void> addANewItemInAList(@PathVariable Long id, @ModelAttribute  CreateTodoItemDTO todoItemDTO){
+	public ResponseEntity<Void> addANewItemInAList(@PathVariable Long id, @RequestBody  CreateTodoItemDTO todoItemDTO){
 		AddAnItemToAListUseCase usecase = new AddAnItemToAListUseCase(todoListRepository);
 		usecase.execute(todoItemDTO.getName(), todoItemDTO.getDescription(), todoItemDTO.getPriority(),
 				todoItemDTO.getDifficulty(), todoItemDTO.getStatus(), id);

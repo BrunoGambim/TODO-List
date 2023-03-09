@@ -2,6 +2,10 @@ package com.brunogambim.todolist.api.v1.dtos;
 
 public class CreateTodoListDTO {
 	private String name;
+	
+	public CreateTodoListDTO() {
+		
+	}
 
 	public CreateTodoListDTO(String name) {
 		this.name = name;

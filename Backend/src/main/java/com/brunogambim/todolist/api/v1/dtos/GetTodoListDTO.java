@@ -10,7 +10,6 @@ public class GetTodoListDTO {
 	private ArrayList<GetTodoItemDTO> items;
 	
 	public GetTodoListDTO(Long id, String name, ArrayList<GetTodoItemDTO> items) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.items = items;

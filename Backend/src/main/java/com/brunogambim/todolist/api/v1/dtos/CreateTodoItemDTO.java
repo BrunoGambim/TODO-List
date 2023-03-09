@@ -7,8 +7,11 @@ public class CreateTodoItemDTO {
 	private String difficulty;
 	private String status;
 	
+	public CreateTodoItemDTO() {
+		
+	}
+	
 	public CreateTodoItemDTO(Long id, String name, String description, String priority, String difficulty, String status) {
-		super();
 		this.name = name;
 		this.description = description;
 		this.priority = priority;

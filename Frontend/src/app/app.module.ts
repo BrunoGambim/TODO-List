@@ -19,6 +19,8 @@ import { TodoListFormComponent } from './components/todo-list-form/todo-list-for
 import { HeaderComponent } from './components/header/header.component';
 import { TodoItemService } from './services/todo-item/todo-item.service';
 import { TodoListService } from './services/todo-list/todo-list.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { TodoListService } from './services/todo-list/todo-list.service';
     TodoListComponent,
     TodoItemFormComponent,
     TodoListFormComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,8 @@ import { TodoListService } from './services/todo-list/todo-list.service';
     MatFormFieldModule,
     MatSelectModule,
     MatMenuModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     TodoItemService,

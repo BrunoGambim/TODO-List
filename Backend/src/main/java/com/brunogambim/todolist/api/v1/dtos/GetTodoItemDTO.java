@@ -11,7 +11,6 @@ public class GetTodoItemDTO {
 	private String status;
 	
 	public GetTodoItemDTO(Long id, String name, String description, String priority, String difficulty, String status) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;

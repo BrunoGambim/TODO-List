@@ -2,10 +2,10 @@
   <mat-dialog-content class="mat-typography">
   <form class="form">
     <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
-      <input matInput>
+      <mat-label matInput>Name</mat-label>
+      <input matInput [(ngModel)]="list.name" name="name">
     </mat-form-field>
-    <button mat-raised-button color="primary">Create</button>
+    <button mat-raised-button color="primary" (click)="save()">Create</button>
   </form>
 </mat-dialog-content>
 
