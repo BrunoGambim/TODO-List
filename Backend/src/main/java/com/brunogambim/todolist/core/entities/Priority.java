@@ -36,4 +36,13 @@ public enum Priority {
 		}
 		throw new IllegalArgumentException("Invalid argument! Id:" + code);
 	}
+	
+	public static Priority toEnum(String desc) {
+		for(Priority priority : Priority.values()) {
+			if(desc.equals(priority.getDescription())) {
+				return priority;
+			}
+		}
+		throw new IllegalArgumentException("Invalid argument! Id:" + desc);
+	}
 }

@@ -36,4 +36,13 @@ public enum Difficulty {
 		}
 		throw new IllegalArgumentException("Invalid argument! Id:" + code);
 	}
+	
+	public static Difficulty toEnum(String desc) {
+		for(Difficulty difficulty : Difficulty.values()) {
+			if(desc.equals(difficulty.getDescription())) {
+				return difficulty;
+			}
+		}
+		throw new IllegalArgumentException("Invalid argument! Id:" + desc);
+	}
 }
