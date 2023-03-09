@@ -17,5 +17,4 @@ public class GetAllTodoListsUseCase {
 	public ArrayList<TodoList> execute() {
 		return this.todoListRepository.getAllLists();
 	}
-	
 }

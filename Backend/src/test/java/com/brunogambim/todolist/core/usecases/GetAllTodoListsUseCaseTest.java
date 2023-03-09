@@ -18,7 +18,6 @@ import com.brunogambim.todolist.core.entities.TodoList;
 import com.brunogambim.todolist.core.repository.TodoListRepository;
 
 public class GetAllTodoListsUseCaseTest {
-	
 	private GetAllTodoListsUseCase useCase;
 	private TodoListRepository repository = Mockito.mock(TodoListRepository.class);
 	private ArrayList<TodoList> todoLists;
