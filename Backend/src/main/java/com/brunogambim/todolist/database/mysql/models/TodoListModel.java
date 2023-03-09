@@ -1,6 +1,7 @@
 package com.brunogambim.todolist.database.mysql.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.brunogambim.todolist.core.entities.TodoItem;
 import com.brunogambim.todolist.core.entities.TodoList;
@@ -22,7 +23,7 @@ public class TodoListModel {
 	
 	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
 	@JoinColumn(name = "list_id")
-	private ArrayList<TodoItemModel> items;
+	private List<TodoItemModel> items;
 	
 	public TodoListModel() {
 	}
@@ -60,11 +61,11 @@ public class TodoListModel {
 		this.name = name;
 	}
 
-	public ArrayList<TodoItemModel> getItems() {
+	public List<TodoItemModel> getItems() {
 		return items;
 	}
 
-	public void setItems(ArrayList<TodoItemModel> items) {
+	public void setItems(List<TodoItemModel> items) {
 		this.items = items;
 	}
 }
