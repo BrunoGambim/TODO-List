@@ -1,7 +1,6 @@
 package com.brunogambim.todolist.database;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.brunogambim.todolist.core.entities.TodoItem;
 import com.brunogambim.todolist.core.entities.TodoList;
 import com.brunogambim.todolist.core.repository.TodoListRepository;
+import com.brunogambim.todolist.database.exceptions.ObjectNotFoundException;
 import com.brunogambim.todolist.database.mysql.models.TodoItemModel;
 import com.brunogambim.todolist.database.mysql.models.TodoListModel;
 import com.brunogambim.todolist.database.mysql.repositories.MysqlTodoListRepository;
@@ -31,7 +31,9 @@ public class TodoListRepositoryImpl implements TodoListRepository {
 
 	@Override
 	public TodoList getListById(Long id) {
-		return this.listRepository.findById(id).get().toEntity();
+		return this.listRepository.findById(id).orElseThrow(
+				() -> new ObjectNotFoundException(id.toString(), TodoList.class))
+				.toEntity();
 	}
 
 	@Override
@@ -41,39 +43,41 @@ public class TodoListRepositoryImpl implements TodoListRepository {
 
 	@Override
 	public void addItemToAList(TodoItem item, Long listId) {
-		TodoListModel list = this.listRepository.findById(listId).get();
+		TodoListModel list = this.listRepository.findById(listId).orElseThrow(
+				() -> new ObjectNotFoundException(listId.toString(), TodoList.class));
 		list.getItems().add(TodoItemModel.fromEntity(item));
 		this.listRepository.save(list);
 	}
 
 	@Override
 	public void updateTodoItem(TodoItem item, Long listId) {
-		TodoListModel list = this.listRepository.findById(listId).get();
-		List<TodoItemModel> listItems = list.getItems();
-		for(int i = 0; i < listItems.size(); i++) {
-			if(listItems.get(i).getId() == item.getId()) {
-				listItems.remove(i);
-				listItems.add(TodoItemModel.fromEntity(item));
-			}
+		TodoListModel list = this.listRepository.findById(listId).orElseThrow(
+				() -> new ObjectNotFoundException(listId.toString(), TodoList.class));
+		Boolean itemHasBeenUpdated = list.updateItem(TodoItemModel.fromEntity(item));
+		if(!itemHasBeenUpdated) {
+			throw new ObjectNotFoundException(item.getId().toString(), TodoItem.class);
 		}
 		this.listRepository.save(list);
 	}
 
 	@Override
 	public void deleteTodoItem(Long id, Long listId) {
-		TodoListModel list = this.listRepository.findById(listId).get();
-		List<TodoItemModel> listItems = list.getItems();
-		for(int i = 0; i < listItems.size(); i++) {
-			if(listItems.get(i).getId() == id) {
-				listItems.remove(i);
-			}
+		TodoListModel list = this.listRepository.findById(listId).orElseThrow(
+				() -> new ObjectNotFoundException(id.toString(), TodoList.class));
+		Boolean itemHasBeenRemoved = list.removeItem(id);
+		if(!itemHasBeenRemoved) {
+			throw new ObjectNotFoundException(id.toString(), TodoItem.class);
 		}
 		this.listRepository.save(list);
 	}
 
 	@Override
 	public void updateTodoList(TodoList list) {
-		this.listRepository.save(TodoListModel.fromEntity(list));
+		TodoListModel listModel = this.listRepository.findById(list.getId()).orElseThrow(
+				() -> new ObjectNotFoundException(list.getId().toString(), TodoList.class));
+		TodoListModel updatedListModel = TodoListModel.fromEntity(list);
+		updatedListModel.setItems(listModel.getItems());
+		this.listRepository.save(updatedListModel);
 	}
 
 	@Override
