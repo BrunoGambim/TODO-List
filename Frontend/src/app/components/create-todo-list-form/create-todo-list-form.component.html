@@ -1,11 +1,11 @@
 <h2 mat-dialog-title>Create New List</h2>
   <mat-dialog-content class="mat-typography">
-  <form class="form">
+  <form class="form" [formGroup]="createTodoListForm">
     <mat-form-field appearance="fill">
       <mat-label matInput>Name</mat-label>
-      <input matInput [(ngModel)]="list.name" name="name">
+      <input matInput formControlName="name" name="name">
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="save()">Create</button>
+    <button mat-raised-button color="primary" (click)="save()" [disabled]="!createTodoListForm.valid">Create</button>
   </form>
 </mat-dialog-content>
 

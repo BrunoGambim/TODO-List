@@ -1,38 +1,38 @@
 <h2 mat-dialog-title>Edit Item</h2>
   <mat-dialog-content class="mat-typography">
-  <form class="form">
-    <mat-form-field appearance="fill" class="form_field">
-      <mat-label>Name</mat-label>
-      <input matInput [(ngModel)]="item.name" name="name">
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="form_field">
-      <mat-label>Description</mat-label>
-      <textarea matInput [(ngModel)]="item.description" name="description"></textarea>
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="form_field">
-      <mat-label>Status</mat-label>
-      <mat-select [(ngModel)]="item.status" name="status">
-        <mat-option value="todo">TODO</mat-option>
-        <mat-option value="in progress">In progress</mat-option>
-        <mat-option value="done">Done</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="form_field">
-      <mat-label>Priority</mat-label>
-      <mat-select [(ngModel)]="item.priority" name="priority">
-        <mat-option value="low">Low</mat-option>
-        <mat-option value="medium">Medium</mat-option>
-        <mat-option value="high">High</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="form_field">
-      <mat-label>Difficulty</mat-label>
-      <mat-select [(ngModel)]="item.difficulty" name="difficulty">
-        <mat-option value="easy">Easy</mat-option>
-        <mat-option value="moderate">Moderate</mat-option>
-        <mat-option value="hard">Hard</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <form class="form" [formGroup]="editTodoItemForm">
+      <mat-form-field appearance="fill" class="form_field">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" name="name">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form_field">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" name="description"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form_field">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" name="status">
+          <mat-option value="todo">TODO</mat-option>
+          <mat-option value="in progress">In progress</mat-option>
+          <mat-option value="done">Done</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form_field">
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority" name="priority">
+          <mat-option value="low">Low</mat-option>
+          <mat-option value="medium">Medium</mat-option>
+          <mat-option value="high">High</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form_field">
+        <mat-label>Difficulty</mat-label>
+        <mat-select formControlName="difficulty" name="difficulty">
+          <mat-option value="easy">Easy</mat-option>
+          <mat-option value="moderate">Moderate</mat-option>
+          <mat-option value="hard">Hard</mat-option>
+        </mat-select>
+      </mat-form-field>
     <button mat-raised-button color="primary" (click)="update()">Update</button>
     <button mat-raised-button color="warn" (click)="deleteItem()">Delete</button>
   </form>

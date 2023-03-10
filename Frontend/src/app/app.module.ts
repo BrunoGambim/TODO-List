@@ -20,7 +20,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { TodoItemService } from './services/todo-item/todo-item.service';
 import { TodoListService } from './services/todo-list/todo-list.service';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditTodoItemFormComponent } from './components/edit-todo-item-form/edit-todo-item-form.component';
 import { EditTodoListFormComponent } from './components/edit-todo-list-form/edit-todo-list-form.component';
 
@@ -48,7 +48,8 @@ import { EditTodoListFormComponent } from './components/edit-todo-list-form/edit
     MatSelectModule,
     MatMenuModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     TodoItemService,

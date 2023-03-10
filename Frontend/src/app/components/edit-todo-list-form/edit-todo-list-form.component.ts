@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TODOList } from 'src/app/models/todo-list';
 import { TodoListService } from 'src/app/services/todo-list/todo-list.service';
@@ -9,14 +10,23 @@ import { TodoListService } from 'src/app/services/todo-list/todo-list.service';
   styleUrls: ['./edit-todo-list-form.component.css']
 })
 export class EditTodoListFormComponent {
+  editTodoListForm: FormGroup
+
   constructor(private todoListService: TodoListService,
      public dialogRef: MatDialogRef<EditTodoListFormComponent>,
-     @Inject(MAT_DIALOG_DATA) public list: TODOList) {
+     @Inject(MAT_DIALOG_DATA) private list: TODOList) {
+      this.editTodoListForm = new FormGroup({
+        name: new FormControl(list.name, Validators.required),
+      });
   }
 
   updateList() {
-    this.todoListService.update(this.list)
-    this.dialogRef.close()
+    let name = this.editTodoListForm.controls['name'].getRawValue()
+    if(name != null){
+      let list: TODOList = {id: this.list.id, name: name}
+      this.todoListService.update(list)
+      this.dialogRef.close()
+    }
   }
 
   deleteList() {
