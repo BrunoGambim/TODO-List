@@ -73,7 +73,10 @@ public class TodoListRepositoryImpl implements TodoListRepository {
 
 	@Override
 	public void updateTodoList(TodoList list) {
-		this.listRepository.save(TodoListModel.fromEntity(list));
+		TodoListModel listModel = this.listRepository.findById(list.getId()).get();
+		TodoListModel updatedListModel = TodoListModel.fromEntity(list);
+		updatedListModel.setItems(listModel.getItems());
+		this.listRepository.save(updatedListModel);
 	}
 
 	@Override
