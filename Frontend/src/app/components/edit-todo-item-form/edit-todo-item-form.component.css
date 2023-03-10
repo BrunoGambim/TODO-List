@@ -1,0 +1,14 @@
+.form {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 3rem;
+  padding: 5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 60rem;
+}
+
+.form_field {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}

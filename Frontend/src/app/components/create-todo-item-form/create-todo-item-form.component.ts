@@ -6,14 +6,14 @@ import { TODOItem } from 'src/app/models/todo-item';
 import { TodoItemService } from 'src/app/services/todo-item/todo-item.service';
 
 @Component({
-  selector: 'app-todo-item-form',
-  templateUrl: './todo-item-form.component.html',
-  styleUrls: ['./todo-item-form.component.css']
+  selector: 'app-create-todo-item-form',
+  templateUrl: './create-todo-item-form.component.html',
+  styleUrls: ['./create-todo-item-form.component.css']
 })
-export class TodoItemFormComponent {
+export class CreateTodoItemFormComponent {
 
-  item: TODOItem = {"name": "", "description": "", "priority": "", "difficulty": "", "status":""}
-  constructor(private todoItemService: TodoItemService, public dialogRef: MatDialogRef<TodoItemFormComponent>) {
+  item: TODOItem = {"name": "", "description": "", "priority": "", "difficulty": "", "status":"", "id": 0}
+  constructor(private todoItemService: TodoItemService, public dialogRef: MatDialogRef<CreateTodoItemFormComponent>) {
 
   }
 

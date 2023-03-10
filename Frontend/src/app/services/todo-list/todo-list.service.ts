@@ -3,13 +3,6 @@ import { TODOList } from '../../models/todo-list';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 
-
-const LIST_DATA: TODOList[] = [{'id': 0 ,'name': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-  {'id': 1 ,'name': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-  {'id': 2 ,'name': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-  {'id': 3 ,'name': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-  {'id': 4 ,'name': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'}]
-
 @Injectable({
   providedIn: 'root'
 })

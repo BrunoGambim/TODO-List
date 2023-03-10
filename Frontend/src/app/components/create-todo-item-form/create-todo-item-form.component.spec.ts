@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TodoItemFormComponent } from './todo-item-form.component';
+import { TodoItemFormComponent } from './create-todo-item-form.component';
 
 describe('TodoItemFormComponent', () => {
   let component: TodoItemFormComponent;
