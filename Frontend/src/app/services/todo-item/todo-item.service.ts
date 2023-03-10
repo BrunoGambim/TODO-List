@@ -46,4 +46,18 @@ export class TodoItemService {
       this.tryUpdate()
     })
   }
+
+  update(todoItem: TODOItem) {
+    this.httpClient.put(this.API + "/" + this.listId + "/items", todoItem).subscribe(
+    res => {
+      this.tryUpdate()
+    })
+  }
+
+  delete(id: number) {
+    this.httpClient.delete(this.API + "/" + this.listId + "/items/" + id).subscribe(
+    res => {
+      this.tryUpdate()
+    })
+  }
 }

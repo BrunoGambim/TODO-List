@@ -4,4 +4,5 @@ export interface TODOItem {
   priority: string;
   status: string;
   difficulty: string;
+  id: number;
 }

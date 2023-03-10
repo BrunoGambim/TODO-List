@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TODOItem } from 'src/app/models/todo-item';
 import { TodoItemService } from 'src/app/services/todo-item/todo-item.service';
-import { TodoItemFormComponent } from '../todo-item-form/todo-item-form.component';
+import { CreateTodoItemFormComponent } from '../create-todo-item-form/create-todo-item-form.component';
 import { Observable } from 'rxjs';
+import { EditTodoItemFormComponent } from '../edit-todo-item-form/edit-todo-item-form.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent {
-  displayedColumns: string[] = ['name', 'description',  'priority', 'status', 'difficulty'];
+  displayedColumns: string[] = ['name', 'description',  'priority', 'status', 'difficulty', 'edit'];
   dataSource: Observable<TODOItem[]>
 
   constructor(public dialog: MatDialog, private todoItemService: TodoItemService) {
@@ -22,7 +23,13 @@ export class TodoListComponent {
     })
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(TodoItemFormComponent);
+  openEditDialog(item: TODOItem) {
+    const dialogRef = this.dialog.open(EditTodoItemFormComponent,{
+      data: item
+    });
+  }
+
+  openCreateDialog() {
+    const dialogRef = this.dialog.open(CreateTodoItemFormComponent);
   }
 }
