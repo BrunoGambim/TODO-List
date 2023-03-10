@@ -2,7 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TODOItem } from 'src/app/models/todo-item';
 import { TodoItemService } from 'src/app/services/todo-item/todo-item.service';
-import { CreateTodoItemFormComponent } from '../create-todo-item-form/create-todo-item-form.component';
 
 @Component({
   selector: 'app-edit-todo-item-form',
@@ -13,7 +12,7 @@ export class EditTodoItemFormComponent {
 
 
   constructor(private todoItemService: TodoItemService,
-    public dialogRef: MatDialogRef<CreateTodoItemFormComponent>,
+    public dialogRef: MatDialogRef<EditTodoItemFormComponent>,
     @Inject(MAT_DIALOG_DATA) public item: TODOItem) {
 
   }

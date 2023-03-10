@@ -5,13 +5,13 @@ import { TODOList } from 'src/app/models/todo-list';
 import { TodoListService } from 'src/app/services/todo-list/todo-list.service';
 
 @Component({
-  selector: 'app-todo-list-form',
-  templateUrl: './todo-list-form.component.html',
-  styleUrls: ['./todo-list-form.component.css']
+  selector: 'app-create-todo-list-form',
+  templateUrl: './create-todo-list-form.component.html',
+  styleUrls: ['./create-todo-list-form.component.css']
 })
-export class TodoListFormComponent {
+export class CreateTodoListFormComponent {
   list: TODOList = {"id": 0, "name": ""}
-  constructor(private todoListService: TodoListService, public dialogRef: MatDialogRef<TodoListFormComponent>) {
+  constructor(private todoListService: TodoListService, public dialogRef: MatDialogRef<CreateTodoListFormComponent>) {
 
   }
 

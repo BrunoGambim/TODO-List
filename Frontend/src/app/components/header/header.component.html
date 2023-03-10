@@ -1,11 +1,15 @@
 <mat-toolbar color="primary">
   <h1 class="main-title">TODO List</h1>
   <span class="example-spacer"></span>
-  <button mat-stroked-button class="navbar-button"  aria-label="Example icon-button with heart icon" (click)="openDialog()">
+  <button mat-stroked-button class="navbar-button" (click)="openEditDialog()">
+    <mat-icon>edit</mat-icon>
+    <span>Edit list</span>
+  </button>
+  <button mat-stroked-button class="navbar-button" (click)="openCreateDialog()">
     <mat-icon>add</mat-icon>
     <span>Create new list</span>
   </button>
-  <button mat-stroked-button class="navbar-button"  aria-label="Example icon-button with heart icon" [matMenuTriggerFor]="menu">
+  <button mat-stroked-button class="navbar-button" [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
     <span>Lists</span>
   </button>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TodoListFormComponent } from './todo-list-form.component';
+import { CreateTodoListFormComponent } from './create-todo-list-form.component';
 
 describe('TodoListFormComponent', () => {
-  let component: TodoListFormComponent;
-  let fixture: ComponentFixture<TodoListFormComponent>;
+  let component: CreateTodoListFormComponent;
+  let fixture: ComponentFixture<CreateTodoListFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TodoListFormComponent ]
+      declarations: [ CreateTodoListFormComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TodoListFormComponent);
+    fixture = TestBed.createComponent(CreateTodoListFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

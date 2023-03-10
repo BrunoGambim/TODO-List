@@ -1,17 +1,19 @@
 package com.brunogambim.todolist.api.v1.dtos;
 
-public class CreateTodoItemDTO {
+public class UpdateTodoItemDTO {
+	private Long id;
 	private String name;
 	private String description;
 	private String priority;
 	private String difficulty;
 	private String status;
 	
-	public CreateTodoItemDTO() {
+	public UpdateTodoItemDTO() {
 		
 	}
 	
-	public CreateTodoItemDTO(String name, String description, String priority, String difficulty, String status) {
+	public UpdateTodoItemDTO(Long id, String name, String description, String priority, String difficulty, String status) {
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.priority = priority;
@@ -19,6 +21,14 @@ public class CreateTodoItemDTO {
 		this.status = status;
 	}
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}

@@ -1,6 +1,7 @@
 package com.brunogambim.todolist.database;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,40 @@ public class TodoListRepositoryImpl implements TodoListRepository {
 		TodoListModel list = this.listRepository.findById(listId).get();
 		list.getItems().add(TodoItemModel.fromEntity(item));
 		this.listRepository.save(list);
+	}
+
+	@Override
+	public void updateTodoItem(TodoItem item, Long listId) {
+		TodoListModel list = this.listRepository.findById(listId).get();
+		List<TodoItemModel> listItems = list.getItems();
+		for(int i = 0; i < listItems.size(); i++) {
+			if(listItems.get(i).getId() == item.getId()) {
+				listItems.remove(i);
+				listItems.add(TodoItemModel.fromEntity(item));
+			}
+		}
+		this.listRepository.save(list);
+	}
+
+	@Override
+	public void deleteTodoItem(Long id, Long listId) {
+		TodoListModel list = this.listRepository.findById(listId).get();
+		List<TodoItemModel> listItems = list.getItems();
+		for(int i = 0; i < listItems.size(); i++) {
+			if(listItems.get(i).getId() == id) {
+				listItems.remove(i);
+			}
+		}
+		this.listRepository.save(list);
+	}
+
+	@Override
+	public void updateTodoList(TodoList list) {
+		this.listRepository.save(TodoListModel.fromEntity(list));
+	}
+
+	@Override
+	public void deleteTodoList(Long id) {
+		this.listRepository.deleteById(id);
 	}
 }
