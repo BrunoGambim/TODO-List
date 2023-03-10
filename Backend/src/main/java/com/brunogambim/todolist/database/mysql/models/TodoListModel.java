@@ -68,4 +68,29 @@ public class TodoListModel {
 	public void setItems(List<TodoItemModel> items) {
 		this.items = items;
 	}
+	
+	public Boolean removeItem(Long id) {
+		int itemCount =  this.items.size();
+		for(int i = 0; i < itemCount; i++) {
+			if(this.items.get(i).getId() == id) {
+				this.items.remove(i);
+				break;
+			}
+		}
+		return itemCount > this.items.size();
+	}
+	
+	public Boolean updateItem(TodoItemModel item) {
+		Boolean itemHasBeenUpdated = false;
+		for(int i = 0; i < this.items.size(); i++) {
+			if(this.items.get(i).getId() == item.getId()) {
+				this.items.remove(i);
+				this.items.add(item);
+				itemHasBeenUpdated = true;
+				break;
+			}
+		}
+		return itemHasBeenUpdated;
+	}
+	
 }

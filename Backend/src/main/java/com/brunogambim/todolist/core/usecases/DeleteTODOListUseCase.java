@@ -1,5 +1,9 @@
 package com.brunogambim.todolist.core.usecases;
 
+import java.util.List;
+
+import com.brunogambim.todolist.core.entities.TodoList;
+import com.brunogambim.todolist.core.exceptions.CannotDeleteAllListsException;
 import com.brunogambim.todolist.core.repository.TodoListRepository;
 
 public class DeleteTODOListUseCase {
@@ -11,6 +15,10 @@ public class DeleteTODOListUseCase {
 	}
 	
 	public void execute(Long id) {
+		List<TodoList> lists = todoListRepository.getAllLists();
+		if(lists.size() < 2) {
+			throw new CannotDeleteAllListsException();
+		}
 		this.todoListRepository.deleteTodoList(id);
 	}
 }
