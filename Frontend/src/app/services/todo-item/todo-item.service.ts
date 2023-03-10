@@ -26,6 +26,9 @@ export class TodoItemService {
     }))
   }
 
+  resetItems() {
+    return this.todoItems.next(this.getItems())
+  }
 
   getUpdates() {
     return this.todoItems
@@ -59,5 +62,9 @@ export class TodoItemService {
     res => {
       this.tryUpdate()
     })
+  }
+
+  getListId() {
+    return this.listId
   }
 }

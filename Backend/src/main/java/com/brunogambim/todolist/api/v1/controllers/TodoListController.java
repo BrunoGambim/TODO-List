@@ -14,11 +14,16 @@ import com.brunogambim.todolist.api.v1.dtos.CreateTodoItemDTO;
 import com.brunogambim.todolist.api.v1.dtos.CreateTodoListDTO;
 import com.brunogambim.todolist.api.v1.dtos.GetTodoItemDTO;
 import com.brunogambim.todolist.api.v1.dtos.GetTodoListDTO;
+import com.brunogambim.todolist.api.v1.dtos.UpdateTodoItemDTO;
 import com.brunogambim.todolist.core.repository.TodoListRepository;
 import com.brunogambim.todolist.core.usecases.AddAnItemToAListUseCase;
 import com.brunogambim.todolist.core.usecases.CreateANewTodoListUseCase;
+import com.brunogambim.todolist.core.usecases.DeleteTODOItemUseCase;
+import com.brunogambim.todolist.core.usecases.DeleteTODOListUseCase;
 import com.brunogambim.todolist.core.usecases.GetAllItemsOfAListUseCase;
 import com.brunogambim.todolist.core.usecases.GetAllTodoListsUseCase;
+import com.brunogambim.todolist.core.usecases.UpdateTODOItemUseCase;
+import com.brunogambim.todolist.core.usecases.UpdateTODOListUseCase;
 
 @RestController
 @RequestMapping(value = "/v1/todo_lists")
@@ -45,6 +50,20 @@ public class TodoListController {
 		return ResponseEntity.ok().build();
 	}
 	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> updateTodoList(@PathVariable Long id, @RequestBody  UpdateTodoItemDTO todoListDTO){
+		UpdateTODOListUseCase usecase = new UpdateTODOListUseCase(todoListRepository);
+		usecase.execute(id, todoListDTO.getName());
+		return ResponseEntity.ok().build();
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> updateTodoList(@PathVariable Long id){
+		DeleteTODOListUseCase usecase = new DeleteTODOListUseCase(todoListRepository);
+		usecase.execute(id);
+		return ResponseEntity.ok().build();
+	}
+	
 	@RequestMapping(value = "/{id}/items", method = RequestMethod.GET)
 	public ResponseEntity<List<GetTodoItemDTO>> getAllItemsOfATodoList(@PathVariable Long id){
 		GetAllItemsOfAListUseCase usecase = new GetAllItemsOfAListUseCase(todoListRepository);
@@ -57,6 +76,21 @@ public class TodoListController {
 		AddAnItemToAListUseCase usecase = new AddAnItemToAListUseCase(todoListRepository);
 		usecase.execute(todoItemDTO.getName(), todoItemDTO.getDescription(), todoItemDTO.getPriority(),
 				todoItemDTO.getDifficulty(), todoItemDTO.getStatus(), id);
+		return ResponseEntity.ok().build();
+	}
+	
+	@RequestMapping(value = "/{id}/items", method = RequestMethod.PUT)
+	public ResponseEntity<Void> updateTODOItem(@PathVariable Long id, @RequestBody  UpdateTodoItemDTO todoItemDTO){
+		UpdateTODOItemUseCase usecase = new UpdateTODOItemUseCase(todoListRepository);
+		usecase.execute(todoItemDTO.getId(), todoItemDTO.getName(), todoItemDTO.getDescription(), todoItemDTO.getPriority(),
+				todoItemDTO.getDifficulty(), todoItemDTO.getStatus(), id);
+		return ResponseEntity.ok().build();
+	}
+	
+	@RequestMapping(value = "/{listId}/items/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> deleteTODOItem(@PathVariable Long listId, @PathVariable Long id){
+		DeleteTODOItemUseCase usecase = new DeleteTODOItemUseCase(todoListRepository);
+		usecase.execute(id, listId);
 		return ResponseEntity.ok().build();
 	}
 }

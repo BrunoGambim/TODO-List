@@ -25,7 +25,7 @@ public class AddAnItemToAListUseCaseTest {
 	
 	@Test
 	void repositoryMethodAreCalledWithTheCorrectParameter() {
-		useCase.execute("item1", "desc1", "high", "moderate", "low", 1L);
+		useCase.execute("item1", "desc1", "high", "moderate", "in progress", 1L);
 	
 		verify(repository).addItemToAList(argThat( x -> {
 				assertThat(x).isNotNull();

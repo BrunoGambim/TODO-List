@@ -15,22 +15,24 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { CreateTodoItemFormComponent } from './components/create-todo-item-form/create-todo-item-form.component';
-import { TodoListFormComponent } from './components/todo-list-form/todo-list-form.component';
+import { CreateTodoListFormComponent } from './components/create-todo-list-form/create-todo-list-form.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TodoItemService } from './services/todo-item/todo-item.service';
 import { TodoListService } from './services/todo-list/todo-list.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { EditTodoItemFormComponent } from './components/edit-todo-item-form/edit-todo-item-form.component';
+import { EditTodoListFormComponent } from './components/edit-todo-list-form/edit-todo-list-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
     CreateTodoItemFormComponent,
-    TodoListFormComponent,
+    CreateTodoListFormComponent,
     HeaderComponent,
     EditTodoItemFormComponent,
+    EditTodoListFormComponent,
   ],
   imports: [
     BrowserModule,

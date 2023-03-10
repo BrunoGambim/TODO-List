@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Edit List</h2>
+  <mat-dialog-content class="mat-typography">
+  <form class="form">
+    <mat-form-field appearance="fill" class="form_field">
+      <mat-label matInput>Name</mat-label>
+      <input matInput [(ngModel)]="list.name" name="name">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="updateList()">Update</button>
+    <button mat-raised-button color="warn" (click)="deleteList()">Delete</button>
+  </form>
+</mat-dialog-content>
+
